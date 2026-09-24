@@ -1,0 +1,15 @@
+{
+  "suite": "weighted_chains",
+  "length": 4,
+  "instances": 81920,
+  "subset_checks": 573440,
+  "feasible": 69892,
+  "unit_agreements": 20480,
+  "disagreements": 0,
+  "cost_patterns": 4,
+  "cpu_seconds": 5.4060231850000005,
+  "wall_seconds": 5.409236846000113,
+  "peak_rss_kib": 92712,
+  "workers": 1,
+  "address_space_limit_bytes": 3221225472
+}

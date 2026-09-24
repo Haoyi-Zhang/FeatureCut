@@ -1,0 +1,45 @@
+{
+  "events": [
+    {
+      "id": 0,
+      "source": 0,
+      "seq": 0,
+      "feature": null,
+      "parents": [],
+      "lower": 0,
+      "upper": 10
+    },
+    {
+      "id": 1,
+      "source": 1,
+      "seq": 0,
+      "feature": "f",
+      "parents": [],
+      "lower": 0,
+      "upper": 10
+    }
+  ],
+  "sources": [
+    {
+      "id": 0,
+      "writes": [],
+      "seal": null
+    },
+    {
+      "id": 1,
+      "writes": [
+        "f"
+      ],
+      "seal": null
+    }
+  ],
+  "cut": [
+    0
+  ],
+  "query": {
+    "upper": 10,
+    "budgets": {
+      "f": 8
+    }
+  }
+}

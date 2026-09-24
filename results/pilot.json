@@ -1,0 +1,16 @@
+{
+  "suite": "pilot",
+  "dag_edge_sets": 8,
+  "interval_tuples_per_dag": 216,
+  "cut_subsets": 8,
+  "budget_patterns": 2,
+  "infeasible_catalogs": 324,
+  "admitted_decisions": 22464,
+  "cut_only_false_acceptances": 13216,
+  "optimizer_certificates_checked": 91,
+  "disagreements": 0,
+  "cpu_seconds": 0.44251892900000006,
+  "wall_seconds": 0.4430533720000085,
+  "peak_rss_kib": 93740,
+  "workers": 1
+}

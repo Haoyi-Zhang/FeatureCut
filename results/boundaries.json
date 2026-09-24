@@ -1,0 +1,13 @@
+{
+  "suite": "boundaries",
+  "greedy_facts": 3,
+  "exact_facts": 2,
+  "envelope_queries": 50400,
+  "fixed_evidence_cases": 2016,
+  "disagreements": 0,
+  "cpu_seconds": 0.9787820489999999,
+  "wall_seconds": 0.9835937200004992,
+  "peak_rss_kib": 94632,
+  "workers": 1,
+  "address_space_limit_bytes": 3221225472
+}

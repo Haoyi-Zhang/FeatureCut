@@ -1,0 +1,60 @@
+{
+  "suite": "independent_audit",
+  "multi_source_optimization": {
+    "models": 9072,
+    "certificate_subset_checks": 326592,
+    "weighted_instances": 36288,
+    "feasible_models": 4405,
+    "unit_disagreements": 0,
+    "weighted_disagreements": 0,
+    "decision_disagreements": 0,
+    "cut_prefix_patterns": 7,
+    "seal_patterns": 4,
+    "cost_patterns": 4
+  },
+  "replay": {
+    "cases": 45,
+    "operators": 4,
+    "features": 2,
+    "disagreements": 0
+  },
+  "ingress": {
+    "controls": [
+      {
+        "name": "materializer_duplicate_manifest",
+        "return_code": 2
+      },
+      {
+        "name": "materializer_duplicate_nested_manifest",
+        "return_code": 2
+      },
+      {
+        "name": "materializer_duplicate_certificate",
+        "return_code": 2
+      },
+      {
+        "name": "materializer_duplicate_packet",
+        "return_code": 2
+      },
+      {
+        "name": "checker_duplicate_model",
+        "return_code": 2
+      },
+      {
+        "name": "producer_duplicate_model",
+        "return_code": 2
+      },
+      {
+        "name": "checker_duplicate_certificate",
+        "return_code": 2
+      }
+    ],
+    "control_count": 7,
+    "all_rejected_before_interpretation": true
+  },
+  "cpu_seconds": 3.5245043990000005,
+  "wall_seconds": 7.658233500999984,
+  "peak_rss_kib": 93608,
+  "workers": 1,
+  "address_space_limit_bytes": 3221225472
+}

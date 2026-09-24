@@ -1,0 +1,33 @@
+{
+  "full4": {
+    "admitted_decisions": 1783808,
+    "infeasible_catalogs": 27200,
+    "rejection_witnesses": 1653564,
+    "cut_only_false_acceptances": 794176,
+    "disagreements": 0
+  },
+  "workload_runs": 54,
+  "workload_rejected_pairs": 54,
+  "materialization_cases": 6,
+  "materialization_controls": 13,
+  "materialization_all_controls_rejected": true,
+  "audit_multi_source_models": 9072,
+  "audit_certificate_subset_checks": 326592,
+  "audit_weighted_instances": 36288,
+  "audit_replay_cases": 45,
+  "audit_duplicate_key_controls": 7,
+  "audit_all_duplicate_key_controls_rejected": true,
+  "audit_disagreements": 0,
+  "reference_rows": 36,
+  "all_references_cited_and_recorded": true,
+  "literature_rows": 35,
+  "full_paper_calibration_rows": 18,
+  "targeted_close_work_rows": 17,
+  "claim_ledger_rows": 21,
+  "external_resource_rows": 46,
+  "completed_process_cpu_seconds": 224.525700287,
+  "unmeasured_interrupted_driver_cpu_upper_bound_seconds": 40,
+  "max_recorded_peak_rss_kib": 188980,
+  "max_recorded_process_wall_seconds": 11.283881905000271,
+  "source": "original per-process JSON plus completion-round materialization, independent-audit, and metadata-audit processes; reproduction record is separate"
+}

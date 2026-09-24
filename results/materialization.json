@@ -1,0 +1,215 @@
+{
+  "suite": "materialization",
+  "schema": 1,
+  "case_count": 6,
+  "cases": [
+    {
+      "pattern": "shared",
+      "scale": 128,
+      "events": 138,
+      "sources": 9,
+      "cut_events": 130,
+      "output_rows": 212,
+      "catalog_facts": 138,
+      "selected_facts": 1,
+      "manifest_bytes": 18694,
+      "minimal_packet_bytes": 7674,
+      "full_packet_bytes": 8660,
+      "warm_bytes_saved": 986,
+      "warm_fraction_saved": 0.11385681293302541,
+      "cold_bytes_saved": 986,
+      "cold_fraction_saved": 0.036045916502156904,
+      "make_seconds": 0.0010709030000271014,
+      "check_seconds": 0.0009471600000097169,
+      "manifest_sha256": "14c1b6fe146f348955ef9cd4c5ac3840acad3822d0abc04a415ea4ed498fd427",
+      "output_sha256": "50413b7c1be454c77e069ae1dc126c8e8584ae0d8a040aab6fe6702ebd8ddb93",
+      "forward_and_backward_agree": true
+    },
+    {
+      "pattern": "shared",
+      "scale": 1024,
+      "events": 1034,
+      "sources": 9,
+      "cut_events": 1026,
+      "output_rows": 512,
+      "catalog_facts": 1034,
+      "selected_facts": 1,
+      "manifest_bytes": 138641,
+      "minimal_packet_bytes": 18021,
+      "full_packet_bytes": 26208,
+      "warm_bytes_saved": 8187,
+      "warm_fraction_saved": 0.31238553113553114,
+      "cold_bytes_saved": 8187,
+      "cold_fraction_saved": 0.049663631565857236,
+      "make_seconds": 0.005332995999992818,
+      "check_seconds": 0.00562219300002198,
+      "manifest_sha256": "ada2ae67886d0bb2df13b2257ab0c525b1bc3b0e48aff58224a39744de0d1741",
+      "output_sha256": "86be20608d76d52763a3726ed15b47d3ab8baa01dac134260fc78ec7ebcac789",
+      "forward_and_backward_agree": true
+    },
+    {
+      "pattern": "shared",
+      "scale": 8192,
+      "events": 8202,
+      "sources": 9,
+      "cut_events": 8194,
+      "output_rows": 512,
+      "catalog_facts": 8202,
+      "selected_facts": 1,
+      "manifest_bytes": 1131357,
+      "minimal_packet_bytes": 18158,
+      "full_packet_bytes": 90857,
+      "warm_bytes_saved": 72699,
+      "warm_fraction_saved": 0.8001474845086235,
+      "cold_bytes_saved": 72699,
+      "cold_fraction_saved": 0.05948140014760099,
+      "make_seconds": 0.044474416000014116,
+      "check_seconds": 0.04200785800003359,
+      "manifest_sha256": "0f5340feebead345acf72c45922ae33485a6f1eeb72b12e6d81344ca747189d0",
+      "output_sha256": "fee697889e34f70f947b1353bda36a087cafa32f11a6d3be0f6d4dd3ba4f6213",
+      "forward_and_backward_agree": true
+    },
+    {
+      "pattern": "independent",
+      "scale": 128,
+      "events": 256,
+      "sources": 128,
+      "cut_events": 128,
+      "output_rows": 428,
+      "catalog_facts": 256,
+      "selected_facts": 128,
+      "manifest_bytes": 38426,
+      "minimal_packet_bytes": 16016,
+      "full_packet_bytes": 16985,
+      "warm_bytes_saved": 969,
+      "warm_fraction_saved": 0.057050338534000586,
+      "cold_bytes_saved": 969,
+      "cold_fraction_saved": 0.01748750248145675,
+      "make_seconds": 0.0016216079999935573,
+      "check_seconds": 0.0018317889999934778,
+      "manifest_sha256": "4579492a9db577bef3cc739e09ca4773fa8bdfd71eed8db31198b34109b28696",
+      "output_sha256": "19508dbf800cc6edaec0d964c326860249b4509ec48ba4b53d250962519e08bc",
+      "forward_and_backward_agree": true
+    },
+    {
+      "pattern": "independent",
+      "scale": 1024,
+      "events": 2048,
+      "sources": 1024,
+      "cut_events": 1024,
+      "output_rows": 512,
+      "catalog_facts": 2048,
+      "selected_facts": 1024,
+      "manifest_bytes": 311277,
+      "minimal_packet_bytes": 26634,
+      "full_packet_bytes": 35295,
+      "warm_bytes_saved": 8661,
+      "warm_fraction_saved": 0.24538886527836803,
+      "cold_bytes_saved": 8661,
+      "cold_fraction_saved": 0.024990478169038467,
+      "make_seconds": 0.011540876000026401,
+      "check_seconds": 0.011943861999952787,
+      "manifest_sha256": "68bdb0b7f2734b623c013a3f0973c2493332e94a921ab62c733f672c401821d5",
+      "output_sha256": "1e38e471aae79004b4985b1e2f0bf2fcd4b1b22160afb55079bc48815f68f805",
+      "forward_and_backward_agree": true
+    },
+    {
+      "pattern": "independent",
+      "scale": 8192,
+      "events": 16384,
+      "sources": 8192,
+      "cut_events": 8192,
+      "output_rows": 512,
+      "catalog_facts": 16384,
+      "selected_facts": 8192,
+      "manifest_bytes": 2551999,
+      "minimal_packet_bytes": 94520,
+      "full_packet_bytes": 170885,
+      "warm_bytes_saved": 76365,
+      "warm_fraction_saved": 0.4468794803522837,
+      "cold_bytes_saved": 76365,
+      "cold_fraction_saved": 0.028045631029452595,
+      "make_seconds": 0.10885274399998934,
+      "check_seconds": 0.18858787100003838,
+      "manifest_sha256": "03ec42b207ab53a1661649cdd07af0e7f3ae7331122da8d47f8472840ab6cebe",
+      "output_sha256": "834152f2a3118a607145c43f01a1d0fc226ba523d3bb0f5960b7222fe49257a3",
+      "forward_and_backward_agree": true
+    }
+  ],
+  "control_count": 13,
+  "controls": [
+    {
+      "name": "wrong_expected_digest",
+      "accepted": false,
+      "reason": "untrusted_manifest"
+    },
+    {
+      "name": "packet_manifest_digest",
+      "accepted": false,
+      "reason": "manifest_mismatch"
+    },
+    {
+      "name": "output_value_without_digest",
+      "accepted": false,
+      "reason": "output_digest_mismatch"
+    },
+    {
+      "name": "output_value_with_digest",
+      "accepted": false,
+      "reason": "replay_digest_mismatch"
+    },
+    {
+      "name": "output_digest",
+      "accepted": false,
+      "reason": "output_digest_mismatch"
+    },
+    {
+      "name": "missing_timing_fact",
+      "accepted": false,
+      "reason": "timing_rejected"
+    },
+    {
+      "name": "duplicate_timing_fact",
+      "accepted": false,
+      "reason": "invalid_facts:certificate facts must be unique strings"
+    },
+    {
+      "name": "cross_manifest_packet",
+      "accepted": false,
+      "reason": "manifest_mismatch"
+    },
+    {
+      "name": "payload_manifest_change",
+      "accepted": false,
+      "reason": "untrusted_manifest"
+    },
+    {
+      "name": "program_manifest_change",
+      "accepted": false,
+      "reason": "untrusted_manifest"
+    },
+    {
+      "name": "cut_manifest_change",
+      "accepted": false,
+      "reason": "untrusted_manifest"
+    },
+    {
+      "name": "listed_unfenced_writer",
+      "accepted": false,
+      "reason": "timing_rejected"
+    },
+    {
+      "name": "unknown_packet_field",
+      "accepted": false,
+      "reason": "malformed:packet: fields must be ['facts', 'manifest_sha256', 'output', 'output_sha256', 'schema']"
+    }
+  ],
+  "all_cases_accepted": true,
+  "all_controls_rejected": true,
+  "binding_boundary": "expected SHA-256 digest is an out-of-band trust anchor; no signature or source authentication",
+  "cpu_seconds": 1.637226199,
+  "wall_seconds": 1.6403363199999603,
+  "peak_rss_kib": 182216,
+  "workers": 1,
+  "address_space_limit_bytes": 3221225472
+}

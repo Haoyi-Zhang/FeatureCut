@@ -1,0 +1,20 @@
+{
+  "accounting_scope": "Measured retained scientific children, recorded historical validations, exact final reproduction, and conservative upper bounds for interrupted or lost completion-round runs; excludes literature reading, typesetting, packaging, and small shell/report overhead. Repeated validation does not add scientific coverage.",
+  "budget_limit_cpu_seconds": 28800,
+  "completion_round_interrupted_and_direct_rechecks_cpu_upper_bound_seconds": 300,
+  "conservative_cumulative_cpu_upper_bound_seconds": 1223.981853884,
+  "final_fresh_copy_byte_identical_json_compared": 199,
+  "final_fresh_copy_exact_json_compared": 199,
+  "final_fresh_copy_reproduction_cpu_seconds": 229.990629813,
+  "final_fresh_copy_reproduction_peak_rss_kib": 190292,
+  "final_fresh_copy_reproduction_task_count": 74,
+  "final_fresh_copy_reproduction_wall_seconds": 278.115979402,
+  "final_fresh_copy_semantic_equal": true,
+  "not_additional_scientific_coverage": true,
+  "original_interrupted_driver_cpu_upper_bound_seconds": 40,
+  "prior_delivered_accounting_cpu_seconds": 693.991224071,
+  "retained_completed_process_cpu_seconds": 224.525700287,
+  "retained_longest_process_wall_seconds": 11.283881905000271,
+  "retained_peak_rss_kib": 188980,
+  "under_cpu_budget": true
+}

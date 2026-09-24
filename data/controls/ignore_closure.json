@@ -1,0 +1,54 @@
+{
+  "case": {
+    "events": [
+      {
+        "id": 0,
+        "source": 0,
+        "seq": 0,
+        "feature": null,
+        "parents": [],
+        "lower": 2,
+        "upper": 2
+      },
+      {
+        "id": 1,
+        "source": 1,
+        "seq": 0,
+        "feature": "f",
+        "parents": [
+          0
+        ],
+        "lower": 2,
+        "upper": 2
+      }
+    ],
+    "sources": [
+      {
+        "id": 0,
+        "writes": [],
+        "seal": null
+      },
+      {
+        "id": 1,
+        "writes": [
+          "f"
+        ],
+        "seal": null
+      }
+    ],
+    "cut": [
+      1
+    ],
+    "query": {
+      "upper": 2,
+      "budgets": {
+        "f": 2
+      }
+    }
+  },
+  "facts": [
+    "e:0",
+    "e:1"
+  ],
+  "expected": false
+}

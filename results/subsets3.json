@@ -1,0 +1,17 @@
+{
+  "suite": "subsets3",
+  "dag_edge_sets": 8,
+  "lower_tuples": 27,
+  "cut_subsets": 8,
+  "budget_patterns": 2,
+  "seal_patterns": 3,
+  "certificate_decisions": 359424,
+  "minimum_cut_comparisons": 44928,
+  "rejection_witnesses": 313950,
+  "disagreements": 0,
+  "cpu_seconds": 11.280238562000001,
+  "wall_seconds": 11.283881905000271,
+  "peak_rss_kib": 93356,
+  "workers": 1,
+  "address_space_limit_bytes": 3221225472
+}

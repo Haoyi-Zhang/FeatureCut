@@ -1,0 +1,46 @@
+{
+  "suite": "illustrations",
+  "weighted_cost": 4,
+  "unit_fact_count": 1,
+  "weighted_selection": [
+    "e:3",
+    "e:1"
+  ],
+  "unit_selection": [
+    "e:0"
+  ],
+  "correlation_integer_samples": [
+    [
+      0,
+      5
+    ],
+    [
+      1,
+      6
+    ],
+    [
+      2,
+      7
+    ],
+    [
+      3,
+      8
+    ],
+    [
+      4,
+      9
+    ],
+    [
+      5,
+      10
+    ]
+  ],
+  "correlation_model_rejected": true,
+  "disagreements": 0,
+  "boundary": "shared-offset restriction is outside executable admission; six points do not prove its real interval",
+  "cpu_seconds": 0.0,
+  "wall_seconds": 0.00047841899959166767,
+  "peak_rss_kib": 92716,
+  "workers": 1,
+  "address_space_limit_bytes": 3221225472
+}

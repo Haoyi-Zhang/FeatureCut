@@ -1,0 +1,115 @@
+{
+  "suite": "mutations",
+  "semantic_controls": [
+    {
+      "control": "upper_as_lower",
+      "correct": false,
+      "mutated": true,
+      "witness": {
+        "kind": "known",
+        "times": [
+          0
+        ],
+        "event": 0
+      }
+    },
+    {
+      "control": "closed_event_passes_equality",
+      "correct": false,
+      "mutated": true,
+      "witness": {
+        "kind": "known",
+        "times": [
+          1
+        ],
+        "event": 0
+      }
+    },
+    {
+      "control": "omit_suffix",
+      "correct": false,
+      "mutated": true,
+      "witness": {
+        "kind": "suffix",
+        "times": [],
+        "source": 0,
+        "feature": "f",
+        "time": 1
+      }
+    },
+    {
+      "control": "minimum_routing_threshold",
+      "correct": false,
+      "mutated": true,
+      "witness": {
+        "kind": "suffix",
+        "times": [],
+        "source": 0,
+        "feature": "g",
+        "time": 1
+      }
+    },
+    {
+      "control": "ignore_closure",
+      "correct": false,
+      "mutated": true,
+      "witness": {
+        "kind": "cut_edge",
+        "parent": 0,
+        "child": 1
+      }
+    },
+    {
+      "control": "underestimate_query",
+      "correct": false,
+      "mutated": true,
+      "witness": {
+        "kind": "known",
+        "times": [
+          1
+        ],
+        "event": 0
+      }
+    },
+    {
+      "control": "seal_is_closed",
+      "correct": true,
+      "mutated": false,
+      "witness": null
+    },
+    {
+      "control": "no_ancestor_propagation",
+      "correct": true,
+      "mutated": false,
+      "witness": null
+    },
+    {
+      "control": "global_strictest_threshold",
+      "correct": true,
+      "mutated": false,
+      "witness": null
+    },
+    {
+      "control": "use_unselected_facts",
+      "correct": false,
+      "mutated": true,
+      "witness": {
+        "kind": "known",
+        "times": [
+          0
+        ],
+        "event": 0
+      }
+    }
+  ],
+  "killed": 10,
+  "schema_rejections": 8,
+  "malformed_certificates": 4,
+  "corrupt_witnesses": 4,
+  "baseline_comparisons": 10,
+  "cpu_seconds": 0.0,
+  "wall_seconds": 0.002612414999930479,
+  "peak_rss_kib": 93360,
+  "workers": 1,
+  "address_space_limit_bytes": 3221225472
+}

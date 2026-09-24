@@ -1,0 +1,22 @@
+{
+  "suite": "chains",
+  "length": 4,
+  "lower_tuples": 256,
+  "budget_patterns": 4,
+  "cut_prefixes": 5,
+  "seal_values": [
+    null,
+    0,
+    1,
+    2
+  ],
+  "instances": 20480,
+  "certificate_subset_checks": 128680,
+  "feasible": 17473,
+  "disagreements": 0,
+  "cpu_seconds": 2.038016318,
+  "wall_seconds": 2.041276786999788,
+  "peak_rss_kib": 93360,
+  "workers": 1,
+  "address_space_limit_bytes": 3221225472
+}

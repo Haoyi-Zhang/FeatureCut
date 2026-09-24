@@ -1,0 +1,17 @@
+{
+  "suite": "covers",
+  "incidence_matrices": 512,
+  "elements": 3,
+  "sets": 3,
+  "feasible": 343,
+  "infeasible": 169,
+  "greedy_suboptimal": 0,
+  "dual_tight": 343,
+  "certificate_subset_checks": 4096,
+  "disagreements": 0,
+  "cpu_seconds": 0.07771126200000006,
+  "wall_seconds": 0.08105272199986757,
+  "peak_rss_kib": 95144,
+  "workers": 1,
+  "address_space_limit_bytes": 3221225472
+}

@@ -1,0 +1,5 @@
+{
+  "driver_interruption": "A 36-case batch exceeded the 40-second container call. Completed case files were retained; missing cases are rerun in batches of at most six.",
+  "unmeasured_interrupted_cpu_upper_bound_seconds": 40,
+  "scientific_failures_observed": 0
+}

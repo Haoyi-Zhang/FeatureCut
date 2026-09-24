@@ -1,0 +1,27 @@
+{
+  "case": {
+    "events": [],
+    "sources": [
+      {
+        "id": 0,
+        "writes": [
+          "f",
+          "g"
+        ],
+        "seal": 0
+      }
+    ],
+    "cut": [],
+    "query": {
+      "upper": 2,
+      "budgets": {
+        "f": 2,
+        "g": 1
+      }
+    }
+  },
+  "facts": [
+    "s:0"
+  ],
+  "expected": false
+}

@@ -1,0 +1,101 @@
+{
+  "events": [
+    {
+      "id": 0,
+      "source": 0,
+      "seq": 0,
+      "feature": null,
+      "parents": [],
+      "lower": 9,
+      "upper": 10
+    },
+    {
+      "id": 1,
+      "source": 0,
+      "seq": 1,
+      "feature": null,
+      "parents": [
+        0
+      ],
+      "lower": 5,
+      "upper": 10
+    },
+    {
+      "id": 2,
+      "source": 0,
+      "seq": 2,
+      "feature": "f1",
+      "parents": [
+        1
+      ],
+      "lower": 0,
+      "upper": 10
+    },
+    {
+      "id": 3,
+      "source": 0,
+      "seq": 3,
+      "feature": null,
+      "parents": [
+        2
+      ],
+      "lower": 9,
+      "upper": 10
+    },
+    {
+      "id": 4,
+      "source": 0,
+      "seq": 4,
+      "feature": "f2",
+      "parents": [
+        3
+      ],
+      "lower": 0,
+      "upper": 10
+    },
+    {
+      "id": 5,
+      "source": 0,
+      "seq": 5,
+      "feature": "f3",
+      "parents": [
+        4
+      ],
+      "lower": 0,
+      "upper": 10
+    },
+    {
+      "id": 6,
+      "source": 0,
+      "seq": 6,
+      "feature": "f4",
+      "parents": [
+        5
+      ],
+      "lower": 0,
+      "upper": 10
+    }
+  ],
+  "sources": [
+    {
+      "id": 0,
+      "writes": [
+        "f1",
+        "f2",
+        "f3",
+        "f4"
+      ],
+      "seal": null
+    }
+  ],
+  "cut": [],
+  "query": {
+    "upper": 10,
+    "budgets": {
+      "f1": 7,
+      "f2": 6,
+      "f3": 3,
+      "f4": 2
+    }
+  }
+}

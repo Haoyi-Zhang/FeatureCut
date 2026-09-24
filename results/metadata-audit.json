@@ -1,0 +1,22 @@
+{
+  "suite": "metadata_audit",
+  "reference_rows": 36,
+  "all_references_cited_and_recorded": true,
+  "unique_reference_identifiers": 36,
+  "literature_rows": 35,
+  "full_paper_calibration_rows": 18,
+  "targeted_close_work_rows": 17,
+  "calibration_group_counts": {
+    "TPDS": 12,
+    "adjacent": 5,
+    "influential": 5
+  },
+  "claim_ledger_rows": 21,
+  "external_resource_rows": 46,
+  "boundary": "Standalone audit checks retained metadata and declarations; final packaging separately cross-checks paper citation keys against BibTeX.",
+  "cpu_seconds": 0.00075009199999998,
+  "wall_seconds": 0.0011635539999588218,
+  "peak_rss_kib": 92588,
+  "workers": 1,
+  "address_space_limit_bytes": 3221225472
+}

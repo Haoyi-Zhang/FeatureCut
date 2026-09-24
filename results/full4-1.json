@@ -1,0 +1,28 @@
+{
+  "suite": "full4",
+  "shard": 1,
+  "shards": 8,
+  "dag_masks": [
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "interval_tuples_per_dag": 1296,
+  "cut_subsets": 16,
+  "budget_patterns": 2,
+  "admitted_decisions": 236064,
+  "infeasible_catalogs": 2991,
+  "rejection_witnesses": 217281,
+  "cut_only_false_acceptances": 110847,
+  "disagreements": 0,
+  "cpu_seconds": 7.912077678,
+  "wall_seconds": 7.915774443999908,
+  "peak_rss_kib": 93616,
+  "workers": 1,
+  "address_space_limit_bytes": 3221225472
+}

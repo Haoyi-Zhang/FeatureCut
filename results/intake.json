@@ -1,0 +1,13 @@
+{
+  "cpu_affinity_count": 5,
+  "cgroup_cpu_quota_cores": 4,
+  "cgroup_memory_max_bytes": 4294967296,
+  "cgroup_memory_current_bytes": 359358464,
+  "mem_available_kib": 5097512,
+  "swap_total_kib": 0,
+  "disk_free_bytes": 32029835264,
+  "planned_workers": 1,
+  "worker_address_limit_bytes": 3000000000,
+  "campaign_cpu_limit_seconds": 28800,
+  "reserved_cpu_seconds": 7200
+}
