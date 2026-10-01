@@ -27,7 +27,7 @@ No Python package installation, network access, GPU, model, private data or
 external service is required. Scientific children pin one allowed CPU and cap
 address space at 3 GiB and CPU time at 35 seconds. Run serially. The retained
 largest observed resident set was below 190 MiB; the final fresh-copy run peaked
-at 190,292 KiB; this is a measurement, not a universal requirement for arbitrary
+at 189,932 KiB; this is a measurement, not a universal requirement for arbitrary
 input sizes. The CLI accepts at most 200,000
 observed events; larger untrusted inputs are outside the resource claim. The
 schematic data model uses arbitrary-precision integer endpoints in the code;
@@ -58,7 +58,12 @@ python3 src/materializer.py check \
 
 The packet is accepted only if the expected digest matches the canonical
 manifest, its selected facts certify the embedded cut, and local deterministic
-replay exactly matches the packet output and digest. The producer supports
+replay exactly matches the packet output and digest.
+The manifest digest does not identify one unique selected-fact list. Facts are
+proof premises checked for membership, uniqueness, and sufficiency: the retained
+minimal and full packets both accept, as do redundant additions and legal
+reorderings. Removing a necessary fact, repeating an identifier, or naming an
+unknown identifier rejects. The producer supports
 `greedy`, `chain`, `exact`, and `full`. Exact search is bounded to 22 catalog
 facts. A chain request on cross-source edges raises a model error rather than
 silently dropping edges. For an uncertifiable cut the producer writes a negative
@@ -84,8 +89,8 @@ Each child is bounded; `--all` spans multiple children and can take several
 minutes. Retained per-process measurements sum to 224.53 CPU seconds, with a
 separate conservative 40-second allowance for an interrupted orchestration
 driver. The final fresh-copy run completed all 74 tasks, matched every semantic
-result, compared 199 retained JSON files byte-for-byte, and recorded 229.99 child
-CPU seconds, 278.12 wall seconds, and a 190,292 KiB child-RSS peak in
+result, compared 199 retained JSON files byte-for-byte, and recorded 324.35 child
+CPU seconds, 428.26 wall seconds, and a 189,932 KiB child-RSS peak in
 `results/reproduction.json`. Do not add repeated semantic case counts as new
 coverage. All evidence was executed during this internal research rather than
 left as an unrun scientific handoff.
@@ -124,7 +129,8 @@ admission and selection; the table separates selection. The original six-family 
 not application throughput or deployment latency. A separate materialization
 suite binds concrete payloads and eight deterministic outputs in six cases. It
 accepts both minimal- and full-fact packets with identical replay and rejects 13
-digest, output, selected-fact, manifest, writer-inventory, and schema controls.
+digest, output, insufficient or ill-formed selected-fact, manifest, writer-inventory,
+and schema controls.
 At scale 8,192, cached-manifest packet savings are 80.0% for shared evidence and
 44.7% for independent evidence; including the manifest reduces those cold
 package savings to 5.9% and 2.8%. These bytes are for the declared JSON schema,

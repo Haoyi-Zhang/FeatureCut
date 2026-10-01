@@ -2,10 +2,13 @@
 
 The manifest file is the trusted application object: it contains the admitted
 history model, an epoch identifier, event payloads, and a small deterministic
-feature program.  A packet carries only its manifest digest, selected timing
-facts, and the claimed output.  Acceptance requires an out-of-band expected
-manifest digest.  SHA-256 is used for content addressing, not as a signature or
-as a source-authentication mechanism.
+feature program.  A packet carries its manifest digest, selected timing facts,
+and the claimed output.  Acceptance requires an out-of-band expected manifest
+digest.  That digest binds the manifest, while the selected fact list is checked
+for validity and sufficiency rather than authenticated as a unique packet
+identity; distinct sufficient lists and legal reorderings are intentionally
+accepted.  SHA-256 is used for content addressing, not as a signature or as a
+source-authentication mechanism.
 """
 from __future__ import annotations
 
@@ -206,7 +209,10 @@ def check_packet(manifest: dict, packet: dict, expected_manifest_sha256: str) ->
     """Fail-closed packet verification against a trusted expected digest.
 
     Malformed objects are returned as rejections rather than being partially
-    interpreted.  The reason string is diagnostic and is not part of the proof.
+    interpreted.  The manifest and replayed output are digest-checked.  Facts
+    are proof premises: they must be distinct, known, and sufficient, but their
+    ordering and the choice among different sufficient subsets are not identity
+    authenticated.  The reason string is diagnostic and is not part of the proof.
     """
     try:
         if not _valid_digest(expected_manifest_sha256):

@@ -1,4 +1,4 @@
-"""Deterministic feature replay, content binding, packet bytes, and tamper controls."""
+"""Replay, manifest/output binding, fact-list contracts, and tamper controls."""
 from __future__ import annotations
 
 import copy
@@ -252,11 +252,96 @@ def tamper_controls(manifest: dict, packet: dict, facts: list[str], other_packet
     return outcomes
 
 
+def fact_list_contract(manifest: dict, minimal_packet: dict, full_packet: dict) -> dict:
+    """Exercise the fact list as proof premises, not as packet identity.
+
+    This uses the retained shared-128 case requested by the paper boundary: the
+    one-fact certificate is sufficient, e:0 is a legal redundant premise, and
+    the complete 138-fact catalog is also sufficient.  Digest fields remain
+    unchanged because neither digest is defined over the selected fact list.
+    """
+    prepared = prepare_manifest(manifest)
+    expected = prepared.digest
+    minimal = list(minimal_packet["facts"])
+    full = list(full_packet["facts"])
+    assert manifest["epoch"] == "shared-128"
+    assert minimal == ["e:129"]
+    assert len(full) == 138
+    assert "e:0" in prepared.context.facts and "e:0" not in minimal
+    assert "e:138" not in prepared.context.facts
+    assert minimal_packet["manifest_sha256"] == full_packet["manifest_sha256"] == expected
+    assert minimal_packet["output_sha256"] == full_packet["output_sha256"]
+    assert minimal_packet["output"] == full_packet["output"]
+
+    cases: list[dict] = []
+
+    def exercise(
+        name: str,
+        base_packet: dict,
+        facts: list[str],
+        should_accept: bool,
+        expected_reason: str,
+    ) -> None:
+        candidate = copy.deepcopy(base_packet)
+        candidate["facts"] = facts
+        decision = check_packet(manifest, candidate, expected)
+        assert decision["accepted"] is should_accept, (name, decision)
+        assert decision["reason"] == expected_reason, (name, decision)
+        cases.append(
+            {
+                "name": name,
+                "facts": facts,
+                "expected_accepted": should_accept,
+                "accepted": decision["accepted"],
+                "reason": decision["reason"],
+            }
+        )
+
+    exercise("minimal", minimal_packet, minimal, True, "accepted")
+    exercise("full_catalog", full_packet, full, True, "accepted")
+    exercise("redundant_e0_appended", minimal_packet, minimal + ["e:0"], True, "accepted")
+    exercise("redundant_e0_reordered", minimal_packet, ["e:0", *minimal], True, "accepted")
+    exercise("necessary_fact_deleted", minimal_packet, [], False, "timing_rejected")
+    exercise(
+        "duplicate_identifier",
+        minimal_packet,
+        minimal + [minimal[0]],
+        False,
+        "invalid_facts:certificate facts must be unique strings",
+    )
+    exercise(
+        "unknown_identifier",
+        minimal_packet,
+        minimal + ["e:138"],
+        False,
+        "invalid_facts:unknown fact identifier",
+    )
+
+    positive = [case for case in cases if case["expected_accepted"]]
+    negative = [case for case in cases if not case["expected_accepted"]]
+    return {
+        "instance": "shared-128",
+        "minimal_fact_count": len(minimal),
+        "full_fact_count": len(full),
+        "manifest_sha256": expected,
+        "output_sha256": minimal_packet["output_sha256"],
+        "positive_case_count": len(positive),
+        "negative_case_count": len(negative),
+        "cases": cases,
+        "all_positive_accepted": all(case["accepted"] for case in positive),
+        "all_negative_rejected": all(not case["accepted"] for case in negative),
+        "boundary": (
+            "manifest and output digests do not authenticate a unique fact list; "
+            "facts are checked for membership, uniqueness, and timing sufficiency"
+        ),
+    }
+
+
 def run() -> dict:
     manifest_root = ROOT / "data" / "materializations"
     packet_root = ROOT / "data" / "materialization-certificates"
     cases = []
-    retained: dict[tuple[str, int], tuple[dict, dict, list[str]]] = {}
+    retained: dict[tuple[str, int], tuple[dict, dict, dict, list[str]]] = {}
     for pattern in PATTERNS:
         for n in SIZES:
             manifest = build(pattern, n)
@@ -312,11 +397,13 @@ def run() -> dict:
                     "forward_and_backward_agree": True,
                 }
             )
-            retained[(pattern, n)] = (manifest, minimal_packet, selected)
+            retained[(pattern, n)] = (manifest, minimal_packet, full_packet, selected)
 
-    manifest, packet, selected = retained[("shared", 128)]
+    manifest, packet, full_packet, selected = retained[("shared", 128)]
     other_packet = retained[("independent", 128)][1]
     controls = tamper_controls(manifest, packet, selected, other_packet)
+    assert len(controls) == 13
+    facts_contract = fact_list_contract(manifest, packet, full_packet)
     return {
         "suite": "materialization",
         "schema": 1,
@@ -326,7 +413,12 @@ def run() -> dict:
         "controls": controls,
         "all_cases_accepted": True,
         "all_controls_rejected": True,
-        "binding_boundary": "expected SHA-256 digest is an out-of-band trust anchor; no signature or source authentication",
+        "fact_list_contract": facts_contract,
+        "binding_boundary": (
+            "expected SHA-256 digest is an out-of-band trust anchor for the manifest; "
+            "output is replay/digest checked; the fact list is validity/sufficiency checked, "
+            "not identity authenticated; no signature or source authentication"
+        ),
     }
 
 
@@ -342,6 +434,8 @@ def main() -> None:
                 "suite": result["suite"],
                 "cases": result["case_count"],
                 "controls": result["control_count"],
+                "fact_contract_positive": result["fact_list_contract"]["positive_case_count"],
+                "fact_contract_negative": result["fact_list_contract"]["negative_case_count"],
                 "cpu_seconds": result["cpu_seconds"],
                 "peak_rss_kib": result["peak_rss_kib"],
             }
