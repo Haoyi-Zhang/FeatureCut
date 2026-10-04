@@ -182,11 +182,7 @@ minimality is not universal encoding minimality. The algorithmic ingredients
 tests does not guarantee venue-level novelty or acceptance. The manuscript is
 an internal research draft, not an independently reviewed submission.
 
-Substantive research, proof, code, experiment and writing assistance was
-provided by OpenAI ChatGPT. GPT-5.6 Sol Pro was used for the completion and
-verification round; the exact model identifier used for the inherited draft was
-not independently verified. Human authorship agreement and
-verification must not be inferred from the generated author line. This license
+This license
 covers original artifact material only; see `LICENSE` and
 `external_resources.csv`. No project instructions, prompts or review history
 are required to reproduce the finite evidence.
