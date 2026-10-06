@@ -1,0 +1,693 @@
+{
+  "tasks": [
+    {
+      "task": "pilot",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 1.096370851,
+      "wall_seconds": 1.0983345610000015,
+      "peak_rss_kib": 16056
+    },
+    {
+      "task": "full4-0",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 22.351502104,
+      "wall_seconds": 22.357147859999998,
+      "peak_rss_kib": 17572
+    },
+    {
+      "task": "full4-1",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 18.853798177,
+      "wall_seconds": 18.861500999000015,
+      "peak_rss_kib": 17636
+    },
+    {
+      "task": "full4-2",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 18.676654412,
+      "wall_seconds": 18.67920102299999,
+      "peak_rss_kib": 17684
+    },
+    {
+      "task": "full4-3",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 16.508952457,
+      "wall_seconds": 16.514212242999974,
+      "peak_rss_kib": 17572
+    },
+    {
+      "task": "full4-4",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 18.345494923999997,
+      "wall_seconds": 18.348066447000008,
+      "peak_rss_kib": 17672
+    },
+    {
+      "task": "full4-5",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 14.084210984999999,
+      "wall_seconds": 14.08687982699999,
+      "peak_rss_kib": 17680
+    },
+    {
+      "task": "full4-6",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 16.596200609999997,
+      "wall_seconds": 16.598516190999987,
+      "peak_rss_kib": 17548
+    },
+    {
+      "task": "full4-7",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 14.31997795,
+      "wall_seconds": 14.324774485000034,
+      "peak_rss_kib": 17568
+    },
+    {
+      "task": "subsets3",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 24.541056386,
+      "wall_seconds": 24.545713447999958,
+      "peak_rss_kib": 18272
+    },
+    {
+      "task": "covers",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.196135333,
+      "wall_seconds": 0.19620345500004532,
+      "peak_rss_kib": 17564
+    },
+    {
+      "task": "chains",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 4.613485261,
+      "wall_seconds": 4.614370145000009,
+      "peak_rss_kib": 17628
+    },
+    {
+      "task": "mutations",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.0038550410000000035,
+      "wall_seconds": 0.004722153000045637,
+      "peak_rss_kib": 16648
+    },
+    {
+      "task": "weighted-3",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 1.3210240549999999,
+      "wall_seconds": 1.321315659999982,
+      "peak_rss_kib": 17028
+    },
+    {
+      "task": "weighted-4",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 11.000863076,
+      "wall_seconds": 11.004854314999989,
+      "peak_rss_kib": 16932
+    },
+    {
+      "task": "boundaries",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 2.213703299,
+      "wall_seconds": 2.2145884309999815,
+      "peak_rss_kib": 16328
+    },
+    {
+      "task": "illustrations",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.0009167029999999979,
+      "wall_seconds": 0.0011645690000250397,
+      "peak_rss_kib": 16072
+    },
+    {
+      "task": "materialization",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 2.197595763,
+      "wall_seconds": 2.198141098000008,
+      "peak_rss_kib": 109568
+    },
+    {
+      "task": "audit",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 6.972917015,
+      "wall_seconds": 7.427797080000005,
+      "peak_rss_kib": 22360
+    },
+    {
+      "task": "metadata",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.001172140000000002,
+      "wall_seconds": 0.0016431490000172744,
+      "peak_rss_kib": 15024
+    },
+    {
+      "task": "selection-boundaries",
+      "semantic_equal": null,
+      "verification": "assertion regression",
+      "cpu_seconds": 0.00013035299999999972,
+      "wall_seconds": 0.0009130499999514541,
+      "peak_rss_kib": 16300
+    },
+    {
+      "task": "shared-128-11",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.084499127,
+      "wall_seconds": 0.08466879500002733,
+      "peak_rss_kib": 17936
+    },
+    {
+      "task": "shared-128-29",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.08535399499999999,
+      "wall_seconds": 0.08570166899994547,
+      "peak_rss_kib": 17860
+    },
+    {
+      "task": "shared-128-47",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.08475744100000002,
+      "wall_seconds": 0.08510729200003198,
+      "peak_rss_kib": 17832
+    },
+    {
+      "task": "shared-1024-11",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.24548554,
+      "wall_seconds": 0.24642486999999846,
+      "peak_rss_kib": 21060
+    },
+    {
+      "task": "shared-1024-29",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.24236546700000003,
+      "wall_seconds": 0.24339335500002335,
+      "peak_rss_kib": 21060
+    },
+    {
+      "task": "shared-1024-47",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.244140914,
+      "wall_seconds": 0.24481534200003807,
+      "peak_rss_kib": 21000
+    },
+    {
+      "task": "shared-8192-11",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 1.8195976319999998,
+      "wall_seconds": 1.820715732999986,
+      "peak_rss_kib": 82332
+    },
+    {
+      "task": "shared-8192-29",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 1.810174761,
+      "wall_seconds": 1.8114640420000114,
+      "peak_rss_kib": 82440
+    },
+    {
+      "task": "shared-8192-47",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 1.840110543,
+      "wall_seconds": 1.8409808769999927,
+      "peak_rss_kib": 82444
+    },
+    {
+      "task": "independent-128-11",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.10206895099999999,
+      "wall_seconds": 0.10249220999997988,
+      "peak_rss_kib": 18328
+    },
+    {
+      "task": "independent-128-29",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.102646751,
+      "wall_seconds": 0.10304081300000689,
+      "peak_rss_kib": 18500
+    },
+    {
+      "task": "independent-128-47",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.101192236,
+      "wall_seconds": 0.1014523349999763,
+      "peak_rss_kib": 18356
+    },
+    {
+      "task": "independent-1024-11",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.393396399,
+      "wall_seconds": 0.39411728799996126,
+      "peak_rss_kib": 23576
+    },
+    {
+      "task": "independent-1024-29",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.394750441,
+      "wall_seconds": 0.3955168040000103,
+      "peak_rss_kib": 23548
+    },
+    {
+      "task": "independent-1024-47",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.38864071200000005,
+      "wall_seconds": 0.3891209259999755,
+      "peak_rss_kib": 23364
+    },
+    {
+      "task": "independent-8192-11",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 3.290229579,
+      "wall_seconds": 3.2911854959999687,
+      "peak_rss_kib": 113604
+    },
+    {
+      "task": "independent-8192-29",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 3.332677253,
+      "wall_seconds": 3.3333290439999814,
+      "peak_rss_kib": 113608
+    },
+    {
+      "task": "independent-8192-47",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 3.333942975,
+      "wall_seconds": 3.335016445000008,
+      "peak_rss_kib": 113616
+    },
+    {
+      "task": "chains-128-11",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.085241214,
+      "wall_seconds": 0.08555335299996614,
+      "peak_rss_kib": 17736
+    },
+    {
+      "task": "chains-128-29",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.08513438499999999,
+      "wall_seconds": 0.08536598400002049,
+      "peak_rss_kib": 17864
+    },
+    {
+      "task": "chains-128-47",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.08652844900000001,
+      "wall_seconds": 0.08683788399997638,
+      "peak_rss_kib": 17896
+    },
+    {
+      "task": "chains-1024-11",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.19586836400000002,
+      "wall_seconds": 0.19674798599999122,
+      "peak_rss_kib": 19644
+    },
+    {
+      "task": "chains-1024-29",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.194545743,
+      "wall_seconds": 0.19492600400002402,
+      "peak_rss_kib": 19720
+    },
+    {
+      "task": "chains-1024-47",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.19765080899999998,
+      "wall_seconds": 0.1980207299999961,
+      "peak_rss_kib": 19832
+    },
+    {
+      "task": "chains-8192-11",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 1.262298502,
+      "wall_seconds": 1.262680744000022,
+      "peak_rss_kib": 52324
+    },
+    {
+      "task": "chains-8192-29",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 1.291102024,
+      "wall_seconds": 1.2914121619999719,
+      "peak_rss_kib": 52172
+    },
+    {
+      "task": "chains-8192-47",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 1.238647104,
+      "wall_seconds": 1.239677592000021,
+      "peak_rss_kib": 52168
+    },
+    {
+      "task": "heterogeneous-128-11",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.08323735999999998,
+      "wall_seconds": 0.08354999900001303,
+      "peak_rss_kib": 18152
+    },
+    {
+      "task": "heterogeneous-128-29",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.083887826,
+      "wall_seconds": 0.08420822499999758,
+      "peak_rss_kib": 18128
+    },
+    {
+      "task": "heterogeneous-128-47",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.08349110600000001,
+      "wall_seconds": 0.08363447599998608,
+      "peak_rss_kib": 18168
+    },
+    {
+      "task": "heterogeneous-1024-11",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.19636185600000003,
+      "wall_seconds": 0.19705191799999966,
+      "peak_rss_kib": 19648
+    },
+    {
+      "task": "heterogeneous-1024-29",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.171410054,
+      "wall_seconds": 0.17204767099997298,
+      "peak_rss_kib": 19676
+    },
+    {
+      "task": "heterogeneous-1024-47",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.17578476399999998,
+      "wall_seconds": 0.1764081090000218,
+      "peak_rss_kib": 19508
+    },
+    {
+      "task": "heterogeneous-8192-11",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 1.158869703,
+      "wall_seconds": 1.1594999330000064,
+      "peak_rss_kib": 38736
+    },
+    {
+      "task": "heterogeneous-8192-29",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 1.2066300559999998,
+      "wall_seconds": 1.2074021770000058,
+      "peak_rss_kib": 38520
+    },
+    {
+      "task": "heterogeneous-8192-47",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 1.2518592210000001,
+      "wall_seconds": 1.2529276270000196,
+      "peak_rss_kib": 38980
+    },
+    {
+      "task": "overlap-128-11",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.097999168,
+      "wall_seconds": 0.09844500099995912,
+      "peak_rss_kib": 18020
+    },
+    {
+      "task": "overlap-128-29",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.09515907199999998,
+      "wall_seconds": 0.09555012999999235,
+      "peak_rss_kib": 18032
+    },
+    {
+      "task": "overlap-128-47",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.094288507,
+      "wall_seconds": 0.09466574399999672,
+      "peak_rss_kib": 18040
+    },
+    {
+      "task": "overlap-1024-11",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.330007742,
+      "wall_seconds": 0.3306344700000068,
+      "peak_rss_kib": 21236
+    },
+    {
+      "task": "overlap-1024-29",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.328382452,
+      "wall_seconds": 0.32900309199999356,
+      "peak_rss_kib": 21048
+    },
+    {
+      "task": "overlap-1024-47",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.351181038,
+      "wall_seconds": 0.35217970600001536,
+      "peak_rss_kib": 21044
+    },
+    {
+      "task": "overlap-8192-11",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 2.528111859,
+      "wall_seconds": 2.528958608000039,
+      "peak_rss_kib": 76212
+    },
+    {
+      "task": "overlap-8192-29",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 2.5857516809999996,
+      "wall_seconds": 2.58764537899998,
+      "peak_rss_kib": 76120
+    },
+    {
+      "task": "overlap-8192-47",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 2.581846902,
+      "wall_seconds": 2.5824222180000334,
+      "peak_rss_kib": 76320
+    },
+    {
+      "task": "dag-128-11",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.089178389,
+      "wall_seconds": 0.08953787599995167,
+      "peak_rss_kib": 18104
+    },
+    {
+      "task": "dag-128-29",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.09176474200000001,
+      "wall_seconds": 0.09209926500000165,
+      "peak_rss_kib": 18316
+    },
+    {
+      "task": "dag-128-47",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.090816189,
+      "wall_seconds": 0.09116726900003869,
+      "peak_rss_kib": 18108
+    },
+    {
+      "task": "dag-1024-11",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.298308608,
+      "wall_seconds": 0.2990482840000368,
+      "peak_rss_kib": 21432
+    },
+    {
+      "task": "dag-1024-29",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.306401022,
+      "wall_seconds": 0.3076252330000102,
+      "peak_rss_kib": 21464
+    },
+    {
+      "task": "dag-1024-47",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 0.29799323,
+      "wall_seconds": 0.29836662399998204,
+      "peak_rss_kib": 21644
+    },
+    {
+      "task": "dag-8192-11",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 2.3379255249999997,
+      "wall_seconds": 2.33919559200001,
+      "peak_rss_kib": 86868
+    },
+    {
+      "task": "dag-8192-29",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 2.354387064,
+      "wall_seconds": 2.3551809780000212,
+      "peak_rss_kib": 86756
+    },
+    {
+      "task": "dag-8192-47",
+      "semantic_equal": true,
+      "verification": "retained semantic equality",
+      "cpu_seconds": 2.236206642,
+      "wall_seconds": 2.236675885000011,
+      "peak_rss_kib": 86824
+    }
+  ],
+  "task_count": 75,
+  "all_requested_equal": true,
+  "complete": true,
+  "execution_copy": "/home/runner/work/_temp/featurecut-scientific-output/run",
+  "requested_tasks": [
+    "pilot",
+    "full4-0",
+    "full4-1",
+    "full4-2",
+    "full4-3",
+    "full4-4",
+    "full4-5",
+    "full4-6",
+    "full4-7",
+    "subsets3",
+    "covers",
+    "chains",
+    "mutations",
+    "weighted-3",
+    "weighted-4",
+    "boundaries",
+    "illustrations",
+    "materialization",
+    "audit",
+    "metadata",
+    "selection-boundaries",
+    "shared-128-11",
+    "shared-128-29",
+    "shared-128-47",
+    "shared-1024-11",
+    "shared-1024-29",
+    "shared-1024-47",
+    "shared-8192-11",
+    "shared-8192-29",
+    "shared-8192-47",
+    "independent-128-11",
+    "independent-128-29",
+    "independent-128-47",
+    "independent-1024-11",
+    "independent-1024-29",
+    "independent-1024-47",
+    "independent-8192-11",
+    "independent-8192-29",
+    "independent-8192-47",
+    "chains-128-11",
+    "chains-128-29",
+    "chains-128-47",
+    "chains-1024-11",
+    "chains-1024-29",
+    "chains-1024-47",
+    "chains-8192-11",
+    "chains-8192-29",
+    "chains-8192-47",
+    "heterogeneous-128-11",
+    "heterogeneous-128-29",
+    "heterogeneous-128-47",
+    "heterogeneous-1024-11",
+    "heterogeneous-1024-29",
+    "heterogeneous-1024-47",
+    "heterogeneous-8192-11",
+    "heterogeneous-8192-29",
+    "heterogeneous-8192-47",
+    "overlap-128-11",
+    "overlap-128-29",
+    "overlap-128-47",
+    "overlap-1024-11",
+    "overlap-1024-29",
+    "overlap-1024-47",
+    "overlap-8192-11",
+    "overlap-8192-29",
+    "overlap-8192-47",
+    "dag-128-11",
+    "dag-128-29",
+    "dag-128-47",
+    "dag-1024-11",
+    "dag-1024-29",
+    "dag-1024-47",
+    "dag-8192-11",
+    "dag-8192-29",
+    "dag-8192-47"
+  ],
+  "retained_semantic_comparisons": 74,
+  "assertion_regression_tasks": 1,
+  "exact_json_inputs_and_certificates_compared": 199,
+  "byte_identical_json_files_compared": 199,
+  "completed_child_cpu_seconds": 237.936305984,
+  "peak_child_rss_kib": 113616,
+  "wall_seconds": 244.541446138,
+  "method": "fresh retained copy; serial children; raw logs retained; semantic comparison excludes timings; retained JSON data compared byte-for-byte"
+}

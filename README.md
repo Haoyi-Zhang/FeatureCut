@@ -182,6 +182,13 @@ the catalog is physically available in this benchmark file.
 
 ## Limitations and provenance
 
+The current Ubuntu / CPython 3.12.14 run completed all 75 tasks. The 74 retained
+scientific payloads matched, the additional selection-boundary regression
+passed, and 199 input/certificate files were byte-identical. Measured child CPU
+was 237.936306 seconds, elapsed time 244.541446 seconds, and maximum child RSS
+113,616 KiB. Current measurements are in `results/measurements/current-linux/`;
+they are separate from earlier host measurements and excluded from equality.
+
 No general proof assistant, independent human verification, deployment,
 authentication, clock-calibration protocol, or source-discovery protocol is
 included. Feature computation is limited to the declared deterministic reference
