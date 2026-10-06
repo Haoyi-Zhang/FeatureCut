@@ -184,6 +184,7 @@ def greedy(ctx: Context) -> list[str] | None:
 
 
 def exact(ctx: Context, max_facts: int = 22) -> list[str] | None:
+    """Enumerate subsets of positive-coverage facts, not the full catalog."""
     targets, masks = cover_sets(ctx)
     if not ctx.causal:
         return None

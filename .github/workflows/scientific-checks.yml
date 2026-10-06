@@ -1,0 +1,39 @@
+name: Scientific checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  bounded-science:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONOPTIMIZE: '0'
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - name: Run retained finite tasks and boundary regressions
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/featurecut-scientific-output"
+          mkdir -p "$OUT"
+          ulimit -v 4194304
+          timeout --signal=TERM --kill-after=5s 1210s python -B reproduce.py --all --wall-budget 1200 --work-dir "$OUT/run" --output "$OUT/reproduction.json" 2>&1 | tee "$OUT/driver.log"
+          timeout 30s python -B report.py --check 2>&1 | tee "$OUT/report.log"
+      - name: Upload raw outputs even after failure
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: scientific-raw-output
+          path: ${{ runner.temp }}/featurecut-scientific-output
+          if-no-files-found: error

@@ -64,8 +64,9 @@ proof premises checked for membership, uniqueness, and sufficiency: the retained
 minimal and full packets both accept, as do redundant additions and legal
 reorderings. Removing a necessary fact, repeating an identifier, or naming an
 unknown identifier rejects. The producer supports
-`greedy`, `chain`, `exact`, and `full`. Exact search is bounded to 22 catalog
-facts. A chain request on cross-source edges raises a model error rather than
+`greedy`, `chain`, `exact`, and `full`. Exact search is bounded to 22 facts with
+positive coverage, after free negative-threshold obligations and useless facts
+are removed; a larger full catalog can still fit that search bound. A chain request on cross-source edges raises a model error rather than
 silently dropping edges. For an uncertifiable cut the producer writes a negative
 world and the least observed cut under all facts, if one exists. This is not a
 claim that the actual history was stale.
@@ -75,25 +76,34 @@ claim that the actual history was stale.
 ```sh
 python3 reproduce.py --task boundaries
 python3 reproduce.py --tasks audit metadata materialization
-python3 reproduce.py --all
+python3 reproduce.py --all --work-dir /tmp/featurecut-run --output /tmp/featurecut-reproduction.json
 python3 report.py --check
 ```
 
-`reproduce.py` copies this repository to its own temporary directory, runs named
+`reproduce.py` copies this repository to a fresh retained directory, runs named
 tasks serially, and compares semantic result fields and all exact JSON inputs
 and certificates with the retained records. It does not overwrite the original
 measurements. Timing and peak-memory observations may vary. A failed comparison
 or timeout is a nonzero exit, not silently excluded data. Use `--output PATH`
-to retain the reproduction record, or `--list` to list the 74 scientific tasks.
-Each child is bounded; `--all` spans multiple children and can take several
-minutes. Retained per-process measurements sum to 224.53 CPU seconds, with a
+to retain the reproduction record, or `--list` to list the 75 scientific tasks:
+74 comparisons with retained results and one assertion-based selection-boundary
+regression. The new regression does not add to the historical finite counts.
+The execution directory must not exist and must be outside this repository.
+Its `reproduction-logs/` retains commands, stdout, stderr, and exit codes; failures
+and timeouts retain an incomplete reproduction record. Assertions must remain
+enabled. Each child has a 40-second wall timeout in addition to its resource
+limits; the whole driver has a 1,200-second wall budget. `--all` spans multiple
+children and can take several minutes. The retained Linux/POSIX campaign's
+per-process measurements sum to 224.53 CPU seconds, with a
 separate conservative 40-second allowance for an interrupted orchestration
-driver. The final fresh-copy run completed all 74 tasks, matched every semantic
+driver. The historical Linux fresh-copy run completed the then-current 74 tasks, matched every semantic
 result, compared 199 retained JSON files byte-for-byte, and recorded 324.35 child
 CPU seconds, 428.26 wall seconds, and a 189,932 KiB child-RSS peak in
 `results/reproduction.json`. Do not add repeated semantic case counts as new
-coverage. All evidence was executed during this internal research rather than
-left as an unrun scientific handoff.
+coverage. These host measurements are not replaced by subsequent Windows
+library checks. `.github/workflows/scientific-checks.yml` defines the current
+bounded Linux run and always uploads raw outputs, including on failure; adding
+the workflow does not establish a successful remote execution.
 
 `report.py --check` recomputes the summary, pooled workload table, and seed-11
 plot data from raw results and verifies retained derived files. `report.py
@@ -179,8 +189,7 @@ operators; it does not establish ML usefulness, conflict-resolution semantics,
 window semantics, or transaction/session guarantees. Selected-assertion
 minimality is not universal encoding minimality. The algorithmic ingredients
 (ideal closure, set cover and interval cover/stabbing) are standard; passing the
-tests does not guarantee venue-level novelty or acceptance. The manuscript is
-an internal research draft, not an independently reviewed submission.
+tests does not guarantee venue-level novelty or acceptance.
 
 This license
 covers original artifact material only; see `LICENSE` and
