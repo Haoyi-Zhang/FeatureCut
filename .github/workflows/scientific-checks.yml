@@ -28,6 +28,7 @@ jobs:
           OUT="$RUNNER_TEMP/featurecut-scientific-output"
           mkdir -p "$OUT"
           ulimit -v 4194304
+          timeout 30s python -B tests/replay_regression.py 2>&1 | tee "$OUT/replay-regression.log"
           timeout --signal=TERM --kill-after=5s 1210s python -B reproduce.py --all --wall-budget 1200 --work-dir "$OUT/run" --output "$OUT/reproduction.json" 2>&1 | tee "$OUT/driver.log"
           timeout 30s python -B report.py --check 2>&1 | tee "$OUT/report.log"
       - name: Upload raw outputs even after failure

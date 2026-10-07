@@ -156,7 +156,17 @@ independent-chain unit/additive-cost optima, and per-feature budget envelopes.
 `src/checker.py` searches backward by obligation threshold. `src/witness.py`
 validates explicit rejection worlds. `src/materializer.py` validates canonical
 manifests and packets and deterministically replays per-entity `count`, `sum`,
-`max`, and latest-by-event-ID outputs. `tests/materialization.py` retains six
+`max`, and latest-by-event-ID outputs. Entity groups and their sorted keys are
+reused across outputs for one feature within each replay call only; packet
+checking still prepares the manifest and freshly replays every accepted packet.
+`tests/replay_regression.py` adds six finite tests with an independent scalar
+reference, repeated-output and call-locality checks, and binding/schema controls.
+Run `python3 -B tests/replay_regression.py` on the supported POSIX host; scientific
+CI runs it explicitly before the unchanged full reproduction. The optional
+`--pure-core` mode evaluates unchanged pure source declarations on other hosts;
+it excludes the native entry point and resource envelope, and is not a full
+artifact or campaign check. No timing improvement is claimed.
+`tests/materialization.py` retains six
 content-bound cases and 13 fail-closed controls. `tests/audit.py` independently
 organizes the two-source decision/optimization domain, a replay specification,
 and duplicate-member ingress controls. `tests/metadata.py` validates unique
@@ -182,7 +192,8 @@ the catalog is physically available in this benchmark file.
 
 ## Limitations and provenance
 
-The current Ubuntu / CPython 3.12.14 run completed all 75 tasks. The 74 retained
+The retained Ubuntu / CPython 3.12.14 run, before the replay-local grouping
+change, completed all 75 tasks. The 74 retained
 scientific payloads matched, the additional selection-boundary regression
 passed, and 199 input/certificate files were byte-identical. Measured child CPU
 was 237.936306 seconds, elapsed time 244.541446 seconds, and maximum child RSS

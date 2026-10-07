@@ -149,13 +149,20 @@ def replay(prepared: PreparedManifest) -> dict:
             entity, value = prepared.payload_by_event[event_id]
             by_feature[feature].append((event_id, entity, value))
 
+    groups_by_feature: dict[str, dict[str, list[tuple[int, int]]]] = {}
+    entities_by_feature: dict[str, list[str]] = {}
+    for feature, observations in by_feature.items():
+        groups: dict[str, list[tuple[int, int]]] = {}
+        for event_id, entity, value in observations:
+            groups.setdefault(entity, []).append((event_id, value))
+        groups_by_feature[feature] = groups
+        entities_by_feature[feature] = sorted(groups)
+
     materialized: list[dict] = []
     for name, feature, operator in prepared.outputs:
-        groups: dict[str, list[tuple[int, int]]] = {}
-        for event_id, entity, value in by_feature[feature]:
-            groups.setdefault(entity, []).append((event_id, value))
+        groups = groups_by_feature[feature]
         values: list[dict] = []
-        for entity in sorted(groups):
+        for entity in entities_by_feature[feature]:
             rows = groups[entity]
             if operator == "count":
                 result = len(rows)
