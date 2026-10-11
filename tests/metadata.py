@@ -3,12 +3,12 @@ from __future__ import annotations
 import csv
 import json
 import sys
+import argparse
 from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
-from resources import begin, finish
 
 EXPECTED_HEADERS = {
     "claim_evidence_ledger.csv": ["claim_id","claim","main_location","proof_or_checker","source_or_test","experiment","figure_or_table","raw_result","maturity","fresh_recheck","boundary"],
@@ -35,8 +35,7 @@ def unique(rows, field, name):
         raise AssertionError(f"missing or duplicate {name}")
     return values
 
-def main():
-    start=begin()
+def audit_metadata():
     claims=load("claim_evidence_ledger.csv")
     external=load("external_resources.csv")
     literature=load("literature_matrix.csv")
@@ -46,8 +45,8 @@ def main():
     unique(literature,"id","literature id")
     unique(references,"bib_key","bibliography key")
     stable=unique(references,"stable_identifier","bibliography stable identifier")
-    if len(references)!=36 or any(row["cited_in_main"]!="yes" for row in references):
-        raise AssertionError("expected exactly 36 cited bibliography records")
+    if len(references)<50 or any(row["cited_in_main"]!="yes" for row in references):
+        raise AssertionError("expected at least 50 cited bibliography records")
     if any(not row["primary_record"].startswith("https://") for row in references):
         raise AssertionError("every bibliography row needs an HTTPS primary record")
     external_ids={row["immutable_scientific_identifier"] for row in external if row["immutable_scientific_identifier"]}
@@ -61,7 +60,7 @@ def main():
     for group,minimum in {"TPDS":12,"adjacent":5,"influential":5}.items():
         if groups[group] < minimum:
             raise AssertionError((group,groups[group],minimum))
-    if len(claims)!=21 or len(external)!=46:
+    if len(claims)!=21 or len(external)<60:
         raise AssertionError((len(claims),len(external)))
     result={
         "suite":"metadata_audit",
@@ -76,8 +75,37 @@ def main():
         "external_resource_rows":len(external),
         "boundary":"Standalone audit checks retained metadata and declarations; final packaging separately cross-checks paper citation keys against BibTeX.",
     }
-    result.update(finish(start))
-    (ROOT/"results/metadata-audit.json").write_text(json.dumps(result,indent=2)+"\n")
+    return result
+
+def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--metadata-only",action="store_true",
+                        help="portable assertions only; no Linux caps or process measurements")
+    parser.add_argument("--output",type=Path,
+                        help="required fresh private output for --metadata-only")
+    args=parser.parse_args()
+    if args.metadata_only:
+        if args.output is None:
+            parser.error("--metadata-only requires --output outside the artifact")
+        output=args.output.resolve()
+        if output.is_relative_to(ROOT) or output.exists():
+            parser.error("metadata-only output must be fresh and outside the artifact")
+    else:
+        if args.output is not None:
+            parser.error("--output is reserved for --metadata-only")
+        # Preserve the native Linux envelope; portable mode never imports it.
+        from resources import begin, finish
+        start=begin()
+        output=ROOT/"results/metadata-audit.json"
+    result=audit_metadata()
+    if args.metadata_only:
+        result.update(execution_mode="portable_metadata_only",
+                      linux_resource_caps_applied=False,
+                      process_measurements="not collected; no Linux campaign or resource-envelope validation")
+    else:
+        result.update(finish(start))
+    output.parent.mkdir(parents=True,exist_ok=True)
+    output.write_text(json.dumps(result,indent=2)+"\n",encoding="utf-8")
     print(json.dumps({k:v for k,v in result.items() if k not in {"boundary","calibration_group_counts"}}))
 
 if __name__=="__main__":

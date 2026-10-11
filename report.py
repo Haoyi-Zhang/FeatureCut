@@ -16,8 +16,15 @@ def no_duplicates(pairs):
 def load_json(path):
     return json.loads(path.read_text(),object_pairs_hook=no_duplicates)
 
+def csv_rows(name):
+    with (ROOT/name).open(newline='',encoding='utf-8') as handle:
+        return list(csv.DictReader(handle))
 
 def derive():
+    references=csv_rows('reference_verification.csv')
+    external=csv_rows('external_resources.csv')
+    identifiers={row['immutable_scientific_identifier'] for row in external
+                 if row['immutable_scientific_identifier']}
     files=list((ROOT/'results').glob('*.json'))+list((ROOT/'results/workloads').glob('*.json'))
     records=[load_json(p) for p in files if p.name not in {'summary.json','reproduction.json'}]
     full=[j for j in records if j.get('suite')=='full4'];wls=[j for j in records if j.get('suite')=='workload']
@@ -36,18 +43,23 @@ def derive():
              'audit_duplicate_key_controls':0 if audit is None else audit['ingress']['control_count'],
              'audit_all_duplicate_key_controls_rejected':False if audit is None else audit['ingress']['all_rejected_before_interpretation'],
              'audit_disagreements':0 if audit is None else (audit['multi_source_optimization']['unit_disagreements']+audit['multi_source_optimization']['weighted_disagreements']+audit['multi_source_optimization']['decision_disagreements']+audit['replay']['disagreements']),
-             'reference_rows':0 if metadata is None else metadata['reference_rows'],
-             'all_references_cited_and_recorded':False if metadata is None else metadata['all_references_cited_and_recorded'],
+             'reference_rows':len(references),
+             'all_references_cited_and_recorded':bool(references) and all(
+                 row['cited_in_main']=='yes' and row['stable_identifier'] in identifiers for row in references),
              'literature_rows':0 if metadata is None else metadata['literature_rows'],
              'full_paper_calibration_rows':0 if metadata is None else metadata['full_paper_calibration_rows'],
              'targeted_close_work_rows':0 if metadata is None else metadata['targeted_close_work_rows'],
              'claim_ledger_rows':0 if metadata is None else metadata['claim_ledger_rows'],
-             'external_resource_rows':0 if metadata is None else metadata['external_resource_rows'],
+             'external_resource_rows':len(external),
+             'retained_metadata_reference_rows':0 if metadata is None else metadata['reference_rows'],
+             'retained_metadata_external_resource_rows':0 if metadata is None else metadata['external_resource_rows'],
+             'metadata_source':'current reference_verification.csv and external_resources.csv declarations; other metadata from retained metadata-audit.json; not a paper-source citation audit',
              'completed_process_cpu_seconds':sum(j.get('cpu_seconds',0) for j in records),
              'unmeasured_interrupted_driver_cpu_upper_bound_seconds':40,
              'max_recorded_peak_rss_kib':max(j.get('peak_rss_kib',0) for j in records),
              'max_recorded_process_wall_seconds':max(j.get('wall_seconds',0) for j in records),
-             'source':'original per-process JSON plus completion-round materialization, independent-audit, and metadata-audit processes; reproduction record is separate'}
+             'process_measurement_scope':'retained per-process JSON, including the historical metadata-audit process; not measurements of current CSV metadata validation',
+             'source':'retained original per-process JSON plus completion-round materialization and independent-audit records; current bibliography/resource cardinalities from CSV; reproduction record is separate'}
     out={'results/summary.json':json.dumps(summary,indent=2)+'\n'}
     buf=io.StringIO(newline='')
     fields=['family','scale','seed','events','edges','sources','targets','header_json_bytes','fact_catalog','method','fact_count','selection_ms','forward_ms','backward_ms','admission_ms']
@@ -93,10 +105,16 @@ def derive():
 
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__);g=p.add_mutually_exclusive_group(required=True)
-    g.add_argument('--write',action='store_true');g.add_argument('--check',action='store_true');a=p.parse_args()
+    g.add_argument('--write',action='store_true');g.add_argument('--check',action='store_true')
+    p.add_argument('--output-dir',type=Path,help='private derived-output directory, only with --write')
+    a=p.parse_args()
+    if a.output_dir is not None and (not a.write or a.output_dir.resolve().is_relative_to(ROOT)):
+        p.error('--output-dir requires --write and a directory outside the artifact')
     for name,text in derive().items():
-        path=ROOT/name
-        if a.write:path.write_text(text)
+        path=(a.output_dir.resolve() if a.output_dir else ROOT)/name
+        if a.write:
+            path.parent.mkdir(parents=True,exist_ok=True)
+            path.write_text(text,encoding='utf-8',newline='')
         else:
             if not path.exists() or path.read_text().replace('\r\n','\n')!=text.replace('\r\n','\n'):
                 raise SystemExit(f'derived result mismatch: {name}')

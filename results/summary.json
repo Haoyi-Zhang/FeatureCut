@@ -18,16 +18,20 @@
   "audit_duplicate_key_controls": 7,
   "audit_all_duplicate_key_controls_rejected": true,
   "audit_disagreements": 0,
-  "reference_rows": 36,
+  "reference_rows": 50,
   "all_references_cited_and_recorded": true,
   "literature_rows": 35,
   "full_paper_calibration_rows": 18,
   "targeted_close_work_rows": 17,
   "claim_ledger_rows": 21,
-  "external_resource_rows": 46,
+  "external_resource_rows": 60,
+  "retained_metadata_reference_rows": 36,
+  "retained_metadata_external_resource_rows": 46,
+  "metadata_source": "current reference_verification.csv and external_resources.csv declarations; other metadata from retained metadata-audit.json; not a paper-source citation audit",
   "completed_process_cpu_seconds": 224.525700287,
   "unmeasured_interrupted_driver_cpu_upper_bound_seconds": 40,
   "max_recorded_peak_rss_kib": 188980,
   "max_recorded_process_wall_seconds": 11.283881905000271,
-  "source": "original per-process JSON plus completion-round materialization, independent-audit, and metadata-audit processes; reproduction record is separate"
+  "process_measurement_scope": "retained per-process JSON, including the historical metadata-audit process; not measurements of current CSV metadata validation",
+  "source": "retained original per-process JSON plus completion-round materialization and independent-audit records; current bibliography/resource cardinalities from CSV; reproduction record is separate"
 }

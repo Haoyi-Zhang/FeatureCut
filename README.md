@@ -85,9 +85,12 @@ tasks serially, and compares semantic result fields and all exact JSON inputs
 and certificates with the retained records. It does not overwrite the original
 measurements. Timing and peak-memory observations may vary. A failed comparison
 or timeout is a nonzero exit, not silently excluded data. Use `--output PATH`
-to retain the reproduction record, or `--list` to list the 75 scientific tasks:
-74 comparisons with retained results and one assertion-based selection-boundary
-regression. The new regression does not add to the historical finite counts.
+to retain the reproduction record, or `--list` to list the 75 tasks:
+73 comparisons with retained scientific results, one current-CSV metadata audit,
+and one assertion-based selection-boundary regression. Only the metadata audit's
+reference and external-resource counts follow the current CSVs; all other
+retained comparisons remain unchanged. Neither audit nor regression adds to the
+historical finite counts.
 The execution directory must not exist and must be outside this repository.
 Its `reproduction-logs/` retains commands, stdout, stderr, and exit codes; failures
 and timeouts retain an incomplete reproduction record. Assertions must remain
@@ -109,6 +112,23 @@ the workflow does not establish a successful remote execution.
 plot data from raw results and verifies retained derived files. `report.py
 --write` refreshes only these derived results. The artifact contains its own
 copy of the quantitative table/plot data and has no dependence on `paper/`.
+The summary takes current reference/resource counts from the CSVs, but keeps
+process measurements from retained JSON records, including the historical
+36-reference, 46-resource metadata audit. These are not measurements of the
+expanded metadata. For private derivation, use `report.py --write --output-dir
+PATH`; the output directory must be outside this repository.
+
+The metadata assertions also have a portable, unmeasured path:
+
+```sh
+python3 -B tests/metadata.py --metadata-only --output /tmp/featurecut-metadata-only.json
+```
+
+Use a fresh output path outside the artifact. This mode checks all four CSVs and
+the same metadata assertions without importing the POSIX resource wrapper; it
+applies no Linux resource caps and records no CPU, wall-time, or RSS measurements.
+It does not run the scientific campaign or certify paper-source citation
+consistency. The default metadata command retains its native resource envelope.
 
 ## Evidence domains
 
@@ -170,7 +190,7 @@ artifact or campaign check. No timing improvement is claimed.
 content-bound cases and 13 fail-closed controls. `tests/audit.py` independently
 organizes the two-source decision/optimization domain, a replay specification,
 and duplicate-member ingress controls. `tests/metadata.py` validates unique
-ledger identifiers, the 36 cited reference records, and the documented 18 full
+ledger identifiers, the 50 cited reference records, and the documented 18 full
 plus 17 targeted literature readings. `tests/oracle.py` directly enumerates small
 integer timestamp worlds and one possible hidden update. The finite oracle shares
 the stated model, not a production time source. `tests/` contains all bounded
@@ -193,11 +213,11 @@ the catalog is physically available in this benchmark file.
 ## Limitations and provenance
 
 The retained Ubuntu / CPython 3.12.14 run, before the replay-local grouping
-change, completed all 75 tasks. The 74 retained
-scientific payloads matched, the additional selection-boundary regression
+change, completed all 75 tasks. The 73 retained scientific payloads and the
+then-current metadata audit matched, the additional selection-boundary regression
 passed, and 199 input/certificate files were byte-identical. Measured child CPU
 was 237.936306 seconds, elapsed time 244.541446 seconds, and maximum child RSS
-113,616 KiB. Current measurements are in `results/measurements/current-linux/`;
+113,616 KiB. Those retained measurements are in `results/measurements/current-linux/`;
 they are separate from earlier host measurements and excluded from equality.
 
 No general proof assistant, independent human verification, deployment,

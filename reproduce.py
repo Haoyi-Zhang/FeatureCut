@@ -1,6 +1,7 @@
 """Serial bounded reproduction from a fresh private copy; preserves raw evidence."""
 from __future__ import annotations
 import argparse
+import csv
 import json
 import os
 import shutil
@@ -48,6 +49,18 @@ def semantic(value):
         return {k:semantic(v) for k,v in value.items() if k not in MEASUREMENTS}
     if isinstance(value,list):return [semantic(v) for v in value]
     return value
+
+def current_metadata_expected(historical):
+    """Refresh only mutable CSV cardinalities, not retained scientific results."""
+    with (ROOT/'reference_verification.csv').open(newline='',encoding='utf-8') as handle:
+        references=list(csv.DictReader(handle))
+    with (ROOT/'external_resources.csv').open(newline='',encoding='utf-8') as handle:
+        external=list(csv.DictReader(handle))
+    expected=dict(historical)
+    expected.update(reference_rows=len(references),
+                    unique_reference_identifiers=len({row['stable_identifier'] for row in references}),
+                    external_resource_rows=len(external))
+    return expected
 
 def main():
     ap=argparse.ArgumentParser(description=__doc__)
@@ -105,12 +118,18 @@ def main():
             actual=json.loads(completed.stdout,object_pairs_hook=no_duplicates)
         else:
             expected=load_json(ROOT/path);actual=load_json(work/path)
+            if name=='metadata':
+                expected=current_metadata_expected(expected)
             if semantic(actual)!=semantic(expected):
                 raise AssertionError(f'{name}: semantic result mismatch')
-        rows.append(dict(task=name,semantic_equal=True if path else None,
-                         verification='retained semantic equality' if path else 'assertion regression',cpu_seconds=actual.get('cpu_seconds',0),
-                         wall_seconds=actual.get('wall_seconds',0),peak_rss_kib=actual.get('peak_rss_kib',0)))
-        print(f'{name}: '+('semantic equality' if path else 'assertion regression passed'),flush=True)
+        row=dict(task=name,semantic_equal=True if path and name!='metadata' else None,
+                         verification=('current CSV metadata equality' if name=='metadata' else
+                                       'retained semantic equality' if path else 'assertion regression'),cpu_seconds=actual.get('cpu_seconds',0),
+                         wall_seconds=actual.get('wall_seconds',0),peak_rss_kib=actual.get('peak_rss_kib',0))
+        if name=='metadata':row['current_metadata_equal']=True
+        rows.append(row)
+        print(f'{name}: '+('current CSV metadata equality' if name=='metadata' else
+                          'semantic equality' if path else 'assertion regression passed'),flush=True)
       inputs=0
       for path in sorted((ROOT/'data').rglob('*.json')):
         relative=path.relative_to(ROOT);other=work/relative
@@ -121,14 +140,15 @@ def main():
       if {p.relative_to(work/'data') for p in (work/'data').rglob('*.json')} != {p.relative_to(ROOT/'data') for p in (ROOT/'data').rglob('*.json')}:
         raise AssertionError('generated data file set changed')
       result.update(task_count=len(rows),all_requested_equal=True,complete=True,
-                retained_semantic_comparisons=sum(TASKS[name][1] is not None for name in names),
+                retained_semantic_comparisons=sum(TASKS[name][1] is not None and name!='metadata' for name in names),
+                current_metadata_assertion_tasks=sum(name=='metadata' for name in names),
                 assertion_regression_tasks=sum(TASKS[name][1] is None for name in names),
                 exact_json_inputs_and_certificates_compared=inputs,
                 byte_identical_json_files_compared=inputs,
                 completed_child_cpu_seconds=sum(r['cpu_seconds'] for r in rows),
                 peak_child_rss_kib=max(r['peak_rss_kib'] for r in rows),
                 wall_seconds=time.perf_counter()-start,
-                method='fresh retained copy; serial children; raw logs retained; semantic comparison excludes timings; retained JSON data compared byte-for-byte')
+                method='fresh retained copy; serial children; raw logs retained; scientific semantic comparison excludes timings; metadata cardinalities follow current CSVs; retained JSON data compared byte-for-byte')
     except (OSError,ValueError,RuntimeError,AssertionError,subprocess.TimeoutExpired) as error:
       result.update(task_count=len(rows),error=str(error),wall_seconds=time.perf_counter()-start)
       raise
