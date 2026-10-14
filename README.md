@@ -1,8 +1,8 @@
 # Causal-cut certificates bounded
 
-A standalone, standard-library Python artifact for timing certificates over
-causal input histories with open source-log prefixes. It is not a production
-feature store, a cryptographic verifier, or a transaction-isolation checker.
+A standalone, standard-library Python artifact for timing certificates and
+deterministic materialization over causal input histories with open source-log
+prefixes. Its input-supply contract is specified below.
 
 ## Result and trust boundary
 
@@ -210,7 +210,7 @@ format stores a full lower-fact catalog for exact reproduction. Selection
 minimality is relative to treating only chosen facts as premises, even though
 the catalog is physically available in this benchmark file.
 
-## Limitations and provenance
+## Input contract and recorded runs
 
 The retained Ubuntu / CPython 3.12.14 run, before the replay-local grouping
 change, completed all 75 tasks. The 73 retained scientific payloads and the
@@ -220,14 +220,16 @@ was 237.936306 seconds, elapsed time 244.541446 seconds, and maximum child RSS
 113,616 KiB. Those retained measurements are in `results/measurements/current-linux/`;
 they are separate from earlier host measurements and excluded from equality.
 
-No general proof assistant, independent human verification, deployment,
-authentication, clock-calibration protocol, or source-discovery protocol is
-included. Feature computation is limited to the declared deterministic reference
-operators; it does not establish ML usefulness, conflict-resolution semantics,
-window semantics, or transaction/session guarantees. Selected-assertion
-minimality is not universal encoding minimality. The algorithmic ingredients
-(ideal closure, set cover and interval cover/stabbing) are standard; passing the
-tests does not guarantee venue-level novelty or acceptance.
+The artifact supplies mathematical proof notes and finite integer-domain
+checks. Authentication, physical-clock calibration, complete writer discovery,
+and delivery of the trusted expected manifest digest belong to the integrating
+system. The reference feature operators have the declared deterministic replay
+semantics; applications supply ML-specific meanings, window/conflict rules, and
+cross-operation transaction or session contracts separately. Optimization counts
+selected primitive assertions against a fixed header, while the packet
+experiment accounts for warm and cold bytes. Ideal closure, set cover, and
+interval cover/stabbing are the standard algorithmic ingredients identified in
+the paper.
 
 This license
 covers original artifact material only; see `LICENSE` and
