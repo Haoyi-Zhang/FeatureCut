@@ -17,6 +17,26 @@ EXPECTED_HEADERS = {
     "reference_verification.csv": ["bib_key","cited_in_main","entry_type","title","authors","year","venue","pages","stable_identifier","primary_record","verification_scope","access_date","status"],
 }
 
+# Canonical publisher routes checked against each PDF's title-page identifier.
+PRIMARY_PDFS = {
+    "watermarks": ("10.14778/3476311.3476389", "https://www.vldb.org/pvldb/vol14/p3135-begoli.pdf"),
+    "featurepipelines": ("10.14778/3625054.3625060", "https://www.vldb.org/pvldb/vol16/p4230-camacho-rodriguez.pdf"),
+}
+
+
+def validate_primary_routes(references, literature, external):
+    by_key = {row["bib_key"]: row for row in references}
+    by_literature = {row["id"]: row for row in literature}
+    for key, (identifier, url) in PRIMARY_PDFS.items():
+        reference = by_key.get(key, {})
+        if reference.get("stable_identifier") != identifier or reference.get("primary_record") != url:
+            raise AssertionError(f"publisher record mismatch for {key}")
+        if by_literature.get(key, {}).get("primary_url") != url:
+            raise AssertionError(f"literature publisher route mismatch for {key}")
+        resources = [row for row in external if row.get("immutable_scientific_identifier") == identifier]
+        if len(resources) != 1 or resources[0].get("scholarly_or_official_url") != url:
+            raise AssertionError(f"external publisher route mismatch for {key}")
+
 def load(name: str):
     path=ROOT/name
     with path.open(newline="",encoding="utf-8") as handle:
@@ -52,6 +72,7 @@ def audit_metadata():
     external_ids={row["immutable_scientific_identifier"] for row in external if row["immutable_scientific_identifier"]}
     if not set(stable) <= external_ids:
         raise AssertionError(f"unledgered bibliography identifiers: {sorted(set(stable)-external_ids)}")
+    validate_primary_routes(references, literature, external)
     targeted=[row for row in literature if "targeted-close-work" in row["calibration_groups"].split(";")]
     full=[row for row in literature if row not in targeted]
     if (len(literature),len(full),len(targeted))!=(35,18,17):

@@ -129,6 +129,10 @@ the same metadata assertions without importing the POSIX resource wrapper; it
 applies no Linux resource caps and records no CPU, wall-time, or RSS measurements.
 It does not run the scientific campaign or certify paper-source citation
 consistency. The default metadata command retains its native resource envelope.
+The offline audit also checks the two recorded PVLDB PDF routes across the
+reference, literature and external-resource tables. Run `python3 -B -m unittest
+discover -s tests -p 'test_metadata_sources.py' -v` for seven source-route
+regressions. These checks validate the recorded links, not the papers' full text.
 
 ## Evidence domains
 
