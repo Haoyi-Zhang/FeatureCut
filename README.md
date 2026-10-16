@@ -22,6 +22,17 @@ paths share input admission and were not independently authored or reviewed.
 
 ## Requirements
 
+Optional figure regeneration uses `requirements-figures.txt` and no TeX:
+
+```sh
+python -m pip install -r requirements-figures.txt
+python -B figures/draw_schematics.py
+python -B figures/check_figures.py
+```
+
+The renderer reads the retained scale table, recreates three schematics and the
+statistical plot, and is consumed by the paper build and scientific CI.
+
 Python 3.10 or later on Linux/POSIX with `resource` and, on Linux, CPU affinity.
 No Python package installation, network access, GPU, model, private data or
 external service is required. Scientific children pin one allowed CPU and cap
